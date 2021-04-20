@@ -33,8 +33,8 @@ node1 = request.RawPC('node1')
 node2 = request.RawPC('node2')
 
 # Assign nodes to different sites
-node1.Site("clem")
-node2.Site("wisc")
+node1.Site("A")
+node2.Site("B")
 
 # Set node images
 node1.disk_image = CENTOS7_IMG
