@@ -28,11 +28,15 @@ if params.public_ip_count < 1:
     pc.reportError(portal.ParameterError('You must allocate at least 1 additional public ip.', ['public_ip_count']))
 pc.verifyParameters()
 
-# Create a node
+# Create two nodes
 node1 = request.RawPC('node1')
 node2 = request.RawPC('node2')
 
-# Set node image
+# Assign nodes to different sites
+node1.Site("clem")
+node2.Site("wisc")
+
+# Set node images
 node1.disk_image = CENTOS7_IMG
 node2.disk_image = CENTOS7_IMG
 
