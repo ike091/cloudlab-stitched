@@ -44,6 +44,20 @@ node2.disk_image = CENTOS7_IMG
 addressPool = igext.AddressPool('addressPool', int(params.public_ip_count))
 request.addResource(addressPool)
 
+# Add LAN to the rspec. 
+lan = request.LAN("lan")
+
+# Must provide a bandwidth. BW is in Kbps
+lan.bandwidth = 100000
+
+# Add nodes to LAN
+iface1 = node1.addInterface("eth1")
+iface2 = node2.addInterface("eth1")
+lan.addInterface(iface1)
+lan.addInterface(iface2)
+
+
+
 # Output RSpec
 pc.printRequestRSpec(request)
 
